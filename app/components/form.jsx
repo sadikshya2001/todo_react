@@ -28,7 +28,7 @@ const Form = ({ submitHandler }) => {
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
       />
-      <button className='bg-black text-white px-4 py-3 text-2xl font-bold rounded m-5'>
+      <button type='submit' className='bg-black text-white px-4 py-3 text-2xl font-bold rounded m-5'>
         Add
       </button>
     </form>
