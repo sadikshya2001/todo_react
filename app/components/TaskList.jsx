@@ -1,4 +1,3 @@
-// components/TaskList.js
 import React from 'react';
 import TaskItem from './TaskItem';
 
@@ -7,8 +6,8 @@ const TaskList = ({ tasks, deleteHandler }) => {
     <div className='p-8 bg-slate-200'>
       <ul>
         {tasks.length > 0 ? (
-          tasks.map((task, index) => (
-            <TaskItem key={index} task={task} index={index} deleteHandler={deleteHandler} />
+          tasks.map((task) => (
+            <TaskItem key={task.id} task={task} deleteHandler={deleteHandler} />
           ))
         ) : (
           <h2>You have finished all the tasks!!</h2>
