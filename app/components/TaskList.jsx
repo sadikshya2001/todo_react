@@ -7,7 +7,12 @@ const TaskList = ({ tasks, deleteHandler }) => {
       <ul>
         {tasks.length > 0 ? (
           tasks.map((task) => (
-            <TaskItem key={task.id} task={task} deleteHandler={deleteHandler} />
+            <TaskItem 
+              key={task.id} 
+              task={task} 
+              deleteHandler={deleteHandler} 
+              isFetchedTask={'userId' in task} 
+            />
           ))
         ) : (
           <h2>You have finished all the tasks!!</h2>
