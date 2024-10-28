@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, deleteHandler }) => {
+const TaskList = ({ tasks, onDelete }) => {
   return (
     <div className='p-8 bg-slate-200'>
       <ul>
@@ -10,7 +10,7 @@ const TaskList = ({ tasks, deleteHandler }) => {
             <TaskItem 
               key={task.id} 
               task={task} 
-              deleteHandler={deleteHandler} 
+              onDelete={onDelete} 
               isFetchedTask={'userId' in task} 
             />
           ))
