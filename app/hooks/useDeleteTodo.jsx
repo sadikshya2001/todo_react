@@ -1,9 +1,7 @@
-// useDeleteTodo.jsx
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
-
+import httpService from '../core/http-config'; 
 const deleteTodo = async (id) => {
-  await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+  await httpService.delete(`/todos/${id}`); 
 };
 
 export const useDeleteTodo = () => {

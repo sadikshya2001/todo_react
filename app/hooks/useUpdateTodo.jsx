@@ -1,17 +1,16 @@
-// useCreateTodo.jsx
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
+import httpService from '../core/http-config'; 
 
-const createTodo = async (newTask) => {
-  const response = await axios.post('https://jsonplaceholder.typicode.com/todos', newTask);
+const updateTodo = async ({ id, updatedTask }) => {
+  const response = await httpService.put(`/todos/${id}`, updatedTask); 
   return response.data;
 };
 
-export const useCreateTodo = () => {
+export const useUpdateTodo = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: createTodo,
+    mutationFn: updateTodo,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
     },
