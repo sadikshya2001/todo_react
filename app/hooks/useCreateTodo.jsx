@@ -1,21 +1,23 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import httpService from '../core/http-config';
 
+const createTodo = async (newTask) => {
+  const response = await httpService.post('/todos', newTask);
+  return response.data;
+};
+
 export const useCreateTodo = () => {
   const queryClient = useQueryClient();
-
+  
   return useMutation({
-    mutationFn: async (newTask) => {
-      const response = await httpService.post('/todos', newTask);
-      return response.data;
-    },
+    mutationFn: createTodo,
     onMutate: async (newTask) => {
       await queryClient.cancelQueries(['todos']);
       
       const previousTodos = queryClient.getQueryData(['todos']);
       
       const optimisticTask = {
-        id: Date.now(), 
+        id: Date.now(),
         title: newTask.title,
         desc: newTask.desc,
         completed: newTask.completed || false
